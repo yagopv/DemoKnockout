@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Prueba knockout</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+	<link rel="stylesheet" href="css/mystyles.css" type="text/css" />
+    <script src="js/jquery.js"></script>
+	<script src='js/knockout2.0.0.js'></script>
+	<script src='js/mapper.js'></script>		
+	<script src='js/html5shiv.js'></script>
+	<script src='js/carsViewModel.js'></script>		
+    <script type="text/javascript">
+        $(document).ready(function() {			
+			/* ko.applyBindings(ko.mapping.fromJS(getModel())) */
+			var viewmodel = new carsViewModel();
+			ko.applyBindings(viewmodel);
+			$("nav a").click(function(e){
+				viewmodel.mostrarconcesionario($(this).attr("id"));
+				return false;
+			});
+        });
+    </script>
+</head>
+<body>
+    <header>
+		<h1>Concesionarios</h1>
+		<nav>
+            <a id="1" href="#">Concesionario 1</a>
+            <a id="2" href="#">Concesionario 2</a>
+            <a id="3" href="#">Concesionario 3</a>
+		</nav>
+	</header>
+	<section id="content">
+		<section id="datos-concesionario">
+			<p data-bind="text:id"></p>
+			<p data-bind="text:concesionario"></p>
+			<p data-bind="text:cif"></p>			
+			<div>
+				<form data-bind="submit: addCoche">
+					<label style="display:block" for="marca">Marca</label>
+					<input type="text" name="marca"/>
+					<label style="display:block" for="modelo">Modelo</label>
+					<input type="text" name="modelo"/>
+					<label for="color">yellow</label>
+					<input type="checkbox" name="color" value="yellow"/>
+					<label for="color">red</label>
+					<input type="checkbox" name="color" value="red"/>
+					<label for="color">green</label>
+					<input type="checkbox" name="color" value="green"/>
+					<label for="color">blue</label>
+					<input type="checkbox" name="color" value="blue"/>
+					<label for="color">grey</label>
+					<input type="checkbox" name="color" value="grey"/>
+					<label for="color">orange</label>
+					<input type="checkbox" name="color" value="orange"/>					
+					<label for="color">black</label>
+					<input type="checkbox" name="color" value="black"/>
+					<input type="submit"  value="Añadir coche"/>					
+				<form>				
+			</div>
+		</section>
+		<section id="coches">
+			<div id="contenedor-coches" data-bind="foreach:coches">
+				<div class="datos-coche">
+					<h2 data-bind="text:marca"></h2>
+					<p data-bind="text:modelo"></p>
+					<p><a class="btn" href="#">Ver detalle</a></p>
+					<div data-bind="foreach:colores">
+						<span class="color" data-bind="style: { backgroundColor: $data.color } " ></span>
+					</div>
+					<a href="#" data-bind="click:$root.removeCoche">Eliminar</a>
+				</div>					
+			</div>
+			<div class="reset-float"></div>
+		</section>	
+	</section>		
+	<footer>
+		<p>&copy; Company 2012</p>
+	</footer>
+</body>
+</html>

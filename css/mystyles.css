@@ -1,0 +1,33 @@
+body { width:100%; padding:3%; }
+
+header { width: 100%; height:100px; position:relative;}
+	header h1 { float:left; width:50%;  }
+	header nav { float:left; width:50%; position:absolute; bottom:0; }	
+	
+#content { margin-top:5%;}
+	
+#datos-concesionario {float:left; width:25%;}
+
+#coches { float:left; 
+		  width:75%; 
+		  border: 2px solid #888888;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box; 
+			-moz-border-radius: 5px;
+			border-radius: 5px;   
+			-moz-box-shadow: 10px 10px 5px #888;
+			-webkit-box-shadow: 10px 10px 5px #888;
+			box-shadow: 10px 10px 5px #888;
+		   padding:2%;
+		}
+
+#contenedor-coches { 
+	width:100%;
+}
+
+.datos-coche { width:25%; float:left;}
+
+.reset-float { clear:left;}
+
+.color { width:15px; height:10px; margin-left:2px; border:1px solid #888888; display:inline-block;}
